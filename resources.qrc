@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/">
+    <qresource>
         <file>qml/main.qml</file>
         <file>qml/Formulario.qml</file>
         <file>qml/DialogConfig.qml</file>

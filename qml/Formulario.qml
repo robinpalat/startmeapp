@@ -38,16 +38,19 @@ Rectangle {
                 anchors.bottom: parent.bottom
                 anchors.margins: 15
                 anchors.topMargin: 15
+                anchors.bottomMargin: 15
                 spacing: 10
 
                 TextField {
                     id: harinaInput
+                    height: 35
                     placeholderText: "Harina (g)"
                     Layout.fillWidth: true
                 }
 
                 TextField {
                     id: levaduraInput
+                    height: 35
                     placeholderText: "Levadura (g)"
                     visible: productoSeleccionado === "Pan"
                     Layout.fillWidth: true
@@ -55,6 +58,7 @@ Rectangle {
 
                 TextField {
                     id: mantecaInput
+                    height: 35
                     placeholderText: "Manteca (g)"
                     visible: productoSeleccionado === "Pan" || productoSeleccionado === "Queque"
                     Layout.fillWidth: true
@@ -62,6 +66,7 @@ Rectangle {
 
                 TextField {
                     id: salInput
+                    height: 35
                     placeholderText: "Sal (g)"
                     visible: productoSeleccionado === "Pan"
                     Layout.fillWidth: true
@@ -69,6 +74,7 @@ Rectangle {
 
                 TextField {
                     id: azucarInput
+                    height: 35
                     placeholderText: "Azúcar (g)"
                     visible: productoSeleccionado === "Queque"
                     Layout.fillWidth: true
@@ -76,6 +82,7 @@ Rectangle {
 
                 TextField {
                     id: huevosInput
+                    height: 35
                     placeholderText: "Huevos (g)"
                     visible: productoSeleccionado === "Queque"
                     Layout.fillWidth: true
@@ -83,6 +90,7 @@ Rectangle {
 
                 TextField {
                     id: aceiteInput
+                    height: 35
                     placeholderText: "Aceite (g)"
                     visible: productoSeleccionado === "Queque"
                     Layout.fillWidth: true
@@ -91,30 +99,89 @@ Rectangle {
         }
 
         // --- Ingredientes ---
-        Text {
-            id: resultado
-            text: ""
-            font.pixelSize: 16
-            color: "#333"
-            wrapMode: Text.WordWrap
+
+        Rectangle {
+            id: rectangle1
+            height: 100
+            color: "#ffffff"
+            radius: 8
+            border.color: "#cccccc"
+            Layout.maximumHeight: 100
+            Layout.preferredHeight: -1
             Layout.fillWidth: true
-            horizontalAlignment: Text.AlignHCenter
+            Layout.fillHeight: false
+            Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+
+            Text {
+                id: resultado
+                text: ""
+                anchors.fill: parent
+                anchors.leftMargin: 10
+                anchors.rightMargin: 10
+                anchors.topMargin: 10
+                anchors.bottomMargin: 10
+                font.pixelSize: 16
+                color: "#333"
+                wrapMode: Text.WordWrap
+                font.bold: true
+                Layout.fillWidth: true
+                horizontalAlignment: Text.AlignLeft
+            }
         }
 
         RowLayout {
+            Layout.rightMargin: 0
+            Layout.leftMargin: 0
             Layout.fillWidth: true
             spacing: 10
 
+            TextField {
+                id: huevosInput1
+                height: 35
+                visible: true
+                Layout.leftMargin: 10
+                Layout.rightMargin: 10
+                Layout.maximumHeight: 35
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                font.italic: false
+                font.bold: false
+                font.pointSize: 10
+                placeholderText: "Cantidad Producida (kg)"
+                Layout.fillWidth: true
+            }
+
+            TextField {
+                id: huevosInput2
+                height: 35
+                visible: true
+                layer.sourceRect.height: 5
+                layer.sourceRect.y: 5
+                layer.sourceRect.width: 5
+                layer.sourceRect.x: 5
+                Layout.leftMargin: 10
+                Layout.maximumHeight: 35
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                font.italic: false
+                font.bold: false
+                font.pointSize: 10
+                placeholderText: "Precio (Kg)"
+                Layout.fillWidth: true
+            }
+        }
+
+        RowLayout {
+            spacing: 10
             ComboBox {
-                id: selector
+                id: selector1
+                Layout.maximumHeight: 40
+                onCurrentTextChanged: { productoSeleccionado = currentText }
                 model: ["Pan", "Queque"]
                 Layout.fillWidth: true
-                onCurrentTextChanged: productoSeleccionado = currentText
             }
 
             Button {
                 text: "Calcular"
-                Layout.fillWidth: true
                 onClicked: {
                     const harina = parseFloat(harinaInput.text) || 0;
                     const levadura = parseFloat(levaduraInput.text) || 0;
@@ -127,17 +194,16 @@ Rectangle {
                     const costoTotal = harina + levadura + manteca + sal + azucar + huevos + aceite;
                     resultado.text = "Costo total: $" + costoTotal.toFixed(2);
                 }
-
-
-
-
+                Layout.fillWidth: true
             }
 
             Button {
-                text: "Precios"
+                text: "Establecer"
+                onClicked: { dialogConfig.open() }
                 Layout.fillWidth: true
-                onClicked: dialogConfig.open()
             }
+            Layout.fillWidth: true
         }
+
     }
 }

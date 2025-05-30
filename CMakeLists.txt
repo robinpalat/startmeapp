@@ -30,14 +30,6 @@ qt_add_executable(startmeapp
 )
 
 
-qt_add_resources(startmeapp "qml_resources"
-    PREFIX "/qml"
-    FILES
-        qml/main.qml
-        qml/assets/icono.png
-        qml/DialogConfig.qml
-)
-
 target_link_libraries(startmeapp
     PRIVATE
     Qt6::Core
