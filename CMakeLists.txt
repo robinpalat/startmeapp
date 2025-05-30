@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(ProyectoCostoPanaderia LANGUAGES CXX)
+project(startmeapp LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -22,7 +22,7 @@ qt_add_resources(RESOURCES resources.qrc)
 
 qt_standard_project_setup()
 
-qt_add_executable(appCostoPanaderia
+qt_add_executable(startmeapp
     main.cpp
     CostoCalculador.cpp
     CostoCalculador.h
@@ -30,7 +30,7 @@ qt_add_executable(appCostoPanaderia
 )
 
 
-qt_add_resources(appCostoPanaderia "qml_resources"
+qt_add_resources(startmeapp "qml_resources"
     PREFIX "/qml"
     FILES
         qml/main.qml
@@ -38,7 +38,7 @@ qt_add_resources(appCostoPanaderia "qml_resources"
         qml/DialogConfig.qml
 )
 
-target_link_libraries(appCostoPanaderia
+target_link_libraries(startmeapp
     PRIVATE
     Qt6::Core
     Qt6::Gui

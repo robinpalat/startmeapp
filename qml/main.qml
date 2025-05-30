@@ -7,14 +7,14 @@ ApplicationWindow {
     visible: true
     width: 480
     height: 640
-    title: qsTr("Calculadora Panadería")
+    title: qsTr("Start Me App")
 
 
     DialogConfig {
         id: dialogConfig
     }
 
-    FormularioPanaderia {
+    Formulario {
         anchors.fill: parent
     }
 }
