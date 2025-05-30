@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/FormularioPanaderia.qml</file>
+        <file>qml/DialogConfig.qml</file>
+        <file>qml/assets/icono.png</file>
+    </qresource>
+</RCC>
